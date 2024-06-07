@@ -107,7 +107,7 @@ export default class Searching extends Vue {
     justify-items: center
 
 .searchInput
-    transition: all 1s ease
+    transition: all 0.5s ease
     margin: 5px
     background: rgba(234, 234, 243, 0.75)
     max-width: 600px
