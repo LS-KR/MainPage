@@ -89,7 +89,8 @@ export default class Searching extends Vue {
     transition: all 1s ease
     margin: 5px
     background: rgba(234, 234, 243, 0.75)
-    width: 600px
+    max-width: 600px
+    width: calc(100vw - 90px)
     height: 50px
     border-style: none
     border-radius: 5px
