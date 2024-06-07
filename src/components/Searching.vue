@@ -67,9 +67,9 @@ export default class Searching extends Vue {
     align-self: center
 
 .googleTitle
-    font-family: 'LXGW Wenkai'
+    font-family: 'Hua'
     color: $mauve
-    font-size: 100px
+    font-size: 80px
     padding: 20px
     margin: 20px
     display: inline-flex
@@ -92,7 +92,9 @@ export default class Searching extends Vue {
     max-width: 600px
     width: calc(100vw - 90px)
     height: 50px
-    border-style: none
+    border-style: solid
+    border-width: 2px
+    border-color: rgba(234, 234, 243, 0.5)
     border-radius: 5px
     box-sizing: border-box
     outline: none
@@ -103,6 +105,8 @@ export default class Searching extends Vue {
     border-color: $blue
     border-width: 2px
     outline: none
+    transform: translateY(-5px)
+    filter: drop-shadow(0px 10px 5px rgba(17, 17, 27, 0.5))
 
 .searchInput:focus
     border-style: solid
@@ -111,6 +115,8 @@ export default class Searching extends Vue {
     user-select: none
     pointer-events: none
     outline: none
+    transform: translateY(-5px)
+    filter: drop-shadow(0px 10px 5px rgba(17, 17, 27, 0.5))
 
 .searchButton
     transition: all 0.5s ease
