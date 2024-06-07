@@ -131,6 +131,8 @@ export default class Searching extends Vue {
     box-sizing: border-box
     outline: none
     font-size: 15px
+    padding-left: 15px
+    padding-right: 15px
 
 .searchInput:hover
     border-style: solid
