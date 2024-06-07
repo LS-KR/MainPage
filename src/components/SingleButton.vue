@@ -64,6 +64,7 @@ export default class SingleButton extends Vue {
             },
             false
         )
+        document.oncontextmenu = ((e) => {e.preventDefault()})
     }
 
     jump() {
