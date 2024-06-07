@@ -43,7 +43,10 @@ export default class Searching extends Vue {
 
     search() {
         const value = (document.getElementById(this.searchId) as HTMLInputElement).value
-        if (isURL(value)) open(value, '_blank')
+        if (isURL(value)) {
+            if ((!value.startsWith('http://')) && (!value.startsWith('https://'))) open('http://' + value, '_blank')
+            else open(value, '_blank')
+        }
         else open(parseSearch(value), '_blank')
     }
 
