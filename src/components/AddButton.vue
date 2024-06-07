@@ -1,6 +1,8 @@
 <template>
     <div class="add">
-        <button class="addButton" v-on:click="add()">+</button>
+        <button class="addButton" v-on:click="add()">
+            <Icon class="addIcon" icon="ion:add-outline" />
+        </button>
         <p class="addName">add...</p>
     </div>
 </template>
@@ -9,8 +11,9 @@
 import { Shortcut } from '@/logic/data'
 import Swal from 'sweetalert2'
 import { Component, Vue } from 'vue-facing-decorator'
+import { Icon } from '@iconify/vue'
 
-@Component({})
+@Component({ components: { Icon } })
 export default class AddButton extends Vue {
     add() {
         if (!localStorage.getItem('buttons')) {
@@ -84,6 +87,13 @@ div:has(.popup-blur)
 .addButton:hover
     transform: translateY(-5px)
     filter: drop-shadow(0px 10px 5px rgba(17, 17, 27, 0.125))
+
+.addIcon
+    color: $text
+    width: 30px
+    height: 30px
+    margin: auto
+    margin-top: 5px
 
 .addName
     color: $base
