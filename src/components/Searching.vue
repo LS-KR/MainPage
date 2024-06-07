@@ -52,7 +52,7 @@ export default class Searching extends Vue {
 
     showTime() {
         const now = new Date()
-        this.text = now.getHours() + ':' + now.getMinutes()
+        this.text = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes())
     }
 
     showMeow() {
