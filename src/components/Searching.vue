@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="title">
-        <img src="../assets/google.webp" class="googleIcon" v-on:click="transformIcon()" v-bind:id="giconId" />
+        <Icon class="googleIcon" icon="logos:google-icon" v-on:click="transformIcon()" v-bind:id="giconId" />
         <h2
             class="googleTitle"
             v-text="text"
