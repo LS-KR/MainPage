@@ -28,6 +28,10 @@ jobs:
         with:
           name: dist
           path: dist
+      
+      - name: Patch for GitHub Pages
+        run: |
+          bash ./scripts/github.sh
 
       - name: Deploy to GitHub branch
         uses: JamesIves/github-pages-deploy-action@v4
