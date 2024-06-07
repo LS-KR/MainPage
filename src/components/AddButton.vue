@@ -19,18 +19,21 @@ export default class AddButton extends Vue {
 
         Swal.fire({
             title: 'Shortcut Name',
-            input: 'text'
+            input: 'text',
+            customClass: 'popup-blur'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
                     title: 'Shortcut URL',
-                    input: 'text'
+                    input: 'text',
+                    customClass: 'popup-blur'
                 }).then((it) => {
                     if (it.isConfirmed) {
                         Swal.fire({
                             title: 'Icon URL',
                             text: 'Could be http:// or https:// or file://',
-                            input: 'text'
+                            input: 'text',
+                            customClass: 'popup-blur'
                         }).then((e) => {
                             const buttons = JSON.parse(
                                 localStorage.getItem('buttons')
@@ -53,6 +56,9 @@ export default class AddButton extends Vue {
 
 <style lang="sass">
 @import '@/css/colors/latte'
+
+div:has(.popup-blur)
+    backdrop-filter: blur(10px)
 
 .add
     display: flex

@@ -40,7 +40,8 @@ export default class SingleButton extends Vue {
                         showCancelButton: true,
                         showConfirmButton: true,
                         showDenyButton: false,
-                        showCloseButton: false
+                        showCloseButton: false,
+                        customClass: 'popup-blur'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             const buttons = JSON.parse(
@@ -77,6 +78,9 @@ export default class SingleButton extends Vue {
 
 <style lang="sass">
 @import '@/css/colors/latte'
+
+div:has(.popup-blur)
+    backdrop-filter: blur(10px)
 
 .single
     display: flex
