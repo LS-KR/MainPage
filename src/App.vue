@@ -6,7 +6,7 @@
         <div class="placeholder1" />
         <ButtonField />
     </div>
-    <Balloon v-for="i in isBirthday" :key="i"/>
+    <Balloon v-for="i in isBirthday" :key="i" />
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ export default class App extends Vue {
 
     created() {
         const now = new Date()
-        if ((now.getDate() == 14) && (now.getMonth() == 5)) {
+        if (now.getDate() == 14 && now.getMonth() == 5) {
             for (let i = 0; i < 50; ++i) {
                 this.isBirthday.push(randint(0, 2147483647))
             }

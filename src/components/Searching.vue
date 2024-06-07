@@ -2,7 +2,12 @@
 <template>
     <div class="title">
         <img src="../assets/google.webp" class="googleIcon" />
-        <h2 class="googleTitle" v-text="text" v-on:mouseover="showTime()" v-on:mouseleave="showMeow()"></h2>
+        <h2
+            class="googleTitle"
+            v-text="text"
+            v-on:mouseover="showTime()"
+            v-on:mouseleave="showMeow()"
+        ></h2>
     </div>
     <div class="search">
         <input
@@ -31,28 +36,30 @@ export default class Searching extends Vue {
     }
 
     mounted() {
-        (document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
+        ;(document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
             'keydown',
             (event) => {
                 if (event.key == 'Enter') this.search()
             },
             false
         )
-        
     }
 
     search() {
         const value = (document.getElementById(this.searchId) as HTMLInputElement).value
         if (isURL(value)) {
-            if ((!value.startsWith('http://')) && (!value.startsWith('https://'))) open('http://' + value, '_blank')
+            if (!value.startsWith('http://') && !value.startsWith('https://'))
+                open('http://' + value, '_blank')
             else open(value, '_blank')
-        }
-        else open(parseSearch(value), '_blank')
+        } else open(parseSearch(value), '_blank')
     }
 
     showTime() {
         const now = new Date()
-        this.text = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes())
+        this.text =
+            now.getHours() +
+            ':' +
+            (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes())
     }
 
     showMeow() {
