@@ -10,6 +10,7 @@
 <script lang="ts">
 import { Shortcut } from '@/logic/data'
 import { randint } from '@/logic/helper'
+import Swal from 'sweetalert2'
 import { Component, Prop, Vue } from 'vue-facing-decorator'
 
 @Component({})
@@ -30,15 +31,35 @@ export default class SingleButton extends Vue {
             (event) => {
                 console.log(event.which)
                 if (event.which == 3) {
-                    const buttons = JSON.parse(localStorage.getItem('buttons')) as Shortcut[]
-                    const r = [] as Shortcut[]
-                    for (const v of buttons) {
-                        if (v.icon == this.src && v.name == this.name && v.url == this.target)
-                            continue
-                        else r.push(v)
-                    }
-                    localStorage.setItem('buttons', JSON.stringify(r))
-                    window.location.reload()
+                    Swal.fire({
+                        title: 'Are you sure to delete shortcut: ' + this.name + '?',
+                        text: 'This action could not be restored.',
+                        icon: 'warning',
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: 'No',
+                        showCancelButton: true,
+                        showConfirmButton: true,
+                        showDenyButton: false,
+                        showCloseButton: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const buttons = JSON.parse(
+                                localStorage.getItem('buttons')
+                            ) as Shortcut[]
+                            const r = [] as Shortcut[]
+                            for (const v of buttons) {
+                                if (
+                                    v.icon == this.src &&
+                                    v.name == this.name &&
+                                    v.url == this.target
+                                )
+                                    continue
+                                else r.push(v)
+                            }
+                            localStorage.setItem('buttons', JSON.stringify(r))
+                            window.location.reload()
+                        }
+                    })
                 }
             },
             false
