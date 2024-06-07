@@ -1,11 +1,15 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="title">
-        <img src="../assets/google.webp" class="googleIcon"/>
+        <img src="../assets/google.webp" class="googleIcon" />
         <h2 class="googleTitle">Meow~</h2>
     </div>
     <div class="search">
-        <input class="searchInput" placeholder="Search with Google or enter address..." v-bind:id="searchId"/>
+        <input
+            class="searchInput"
+            placeholder="Search with Google or enter address..."
+            v-bind:id="searchId"
+        />
         <button class="searchButton" v-on:click="search()">
             <Icon class="searchIcon" icon="ph:arrows-clockwise" />
         </button>
@@ -13,22 +17,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-facing-decorator';
+import { Component, Vue } from 'vue-facing-decorator'
 import { randint, isURL, parseSearch } from '@/logic/helper'
 import { Icon } from '@iconify/vue'
 
-@Component({ components: {Icon}})
+@Component({ components: { Icon } })
 export default class Searching extends Vue {
     searchId = ''
 
     created() {
-        this.searchId = 'search-input-' + randint(0, 2147483647).toString();
+        this.searchId = 'search-input-' + randint(0, 2147483647).toString()
     }
 
     mounted() {
-        (document.getElementById(this.searchId) as HTMLInputElement).addEventListener('keydown', (event) => {
-            if (event.key == "Enter") this.search()
-        }, false)
+        ;(document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
+            'keydown',
+            (event) => {
+                if (event.key == 'Enter') this.search()
+            },
+            false
+        )
     }
 
     search() {
@@ -119,5 +127,4 @@ export default class Searching extends Vue {
     color: #dc8a78
     width: 25px
     height: 25px
-
 </style>

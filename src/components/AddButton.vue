@@ -1,16 +1,14 @@
 <template>
     <div class="add">
-        <button class="addButton" v-on:click="add()">
-            +
-        </button>
+        <button class="addButton" v-on:click="add()">+</button>
         <p class="addName">add...</p>
     </div>
 </template>
 
 <script lang="ts">
-import { Shortcut } from '@/logic/data';
-import Swal from 'sweetalert2';
-import { Component, Vue } from 'vue-facing-decorator';
+import { Shortcut } from '@/logic/data'
+import Swal from 'sweetalert2'
+import { Component, Vue } from 'vue-facing-decorator'
 
 @Component({})
 export default class AddButton extends Vue {
@@ -20,25 +18,27 @@ export default class AddButton extends Vue {
         }
 
         Swal.fire({
-            title: "Shortcut Name",
+            title: 'Shortcut Name',
             input: 'text'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: "Shortcut URL",
+                    title: 'Shortcut URL',
                     input: 'text'
                 }).then((it) => {
                     if (it.isConfirmed) {
                         Swal.fire({
-                            title: "Icon URL",
-                            text: "Could be http:// or https:// or file://",
+                            title: 'Icon URL',
+                            text: 'Could be http:// or https:// or file://',
                             input: 'text'
                         }).then((e) => {
-                            const buttons = JSON.parse(localStorage.getItem('buttons')) as Shortcut[]
+                            const buttons = JSON.parse(
+                                localStorage.getItem('buttons')
+                            ) as Shortcut[]
                             buttons.push({
-                                name: (result.value as string),
-                                url: (it.value as string),
-                                icon: (e.value as string)
+                                name: result.value as string,
+                                url: it.value as string,
+                                icon: e.value as string
                             })
                             localStorage.setItem('buttons', JSON.stringify(buttons))
                             location.reload()

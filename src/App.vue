@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator'
 import Searching from './components/Searching.vue'
-import ButtonField from './components/ButtonField.vue';
+import ButtonField from './components/ButtonField.vue'
 
 @Component({ components: { Searching, ButtonField } })
 export default class App extends Vue {}
