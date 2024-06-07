@@ -103,6 +103,8 @@ export default class SingleButton extends Vue {
     margin: 5px
     width: 30px
     height: 30px
+    object-fit: contain
+    margin-top: 7.5px
 
 .singleName
     color: $base
