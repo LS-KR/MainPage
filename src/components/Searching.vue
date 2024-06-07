@@ -2,7 +2,7 @@
 <template>
     <div class="title">
         <img src="../assets/google.webp" class="googleIcon" />
-        <h2 class="googleTitle">Meow~</h2>
+        <h2 class="googleTitle" v-text="text" v-on:mouseover="showTime()" v-on:mouseleave="showMeow()"></h2>
     </div>
     <div class="search">
         <input
@@ -24,25 +24,36 @@ import { Icon } from '@iconify/vue'
 @Component({ components: { Icon } })
 export default class Searching extends Vue {
     searchId = ''
+    text = 'Meow~'
 
     created() {
         this.searchId = 'search-input-' + randint(0, 2147483647).toString()
     }
 
     mounted() {
-        ;(document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
+        (document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
             'keydown',
             (event) => {
                 if (event.key == 'Enter') this.search()
             },
             false
         )
+        
     }
 
     search() {
         const value = (document.getElementById(this.searchId) as HTMLInputElement).value
         if (isURL(value)) open(value, '_blank')
         else open(parseSearch(value), '_blank')
+    }
+
+    showTime() {
+        const now = new Date()
+        this.text = now.getHours() + ':' + now.getMinutes()
+    }
+
+    showMeow() {
+        this.text = 'Meow~'
     }
 }
 </script>
