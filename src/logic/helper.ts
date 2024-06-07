@@ -46,3 +46,12 @@ export function isURL(s: string): boolean {
     )
     return regex.test(s)
 }
+
+export function delay(milliseconds: number): Promise<void>{
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+export async function scheduledTask(milliseconds: number, task: () => any) {
+    await delay(milliseconds)
+    task()
+}
