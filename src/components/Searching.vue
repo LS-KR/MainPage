@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="title">
-        <img src="../assets/google.webp" class="googleIcon" />
+        <img src="../assets/google.webp" class="googleIcon" v-on:click="transformIcon()" v-bind:id="giconId" />
         <h2
             class="googleTitle"
             v-text="text"
@@ -29,10 +29,12 @@ import { Icon } from '@iconify/vue'
 @Component({ components: { Icon } })
 export default class Searching extends Vue {
     searchId = ''
+    giconId = ''
     text = 'Meow~'
 
     created() {
         this.searchId = 'search-input-' + randint(0, 2147483647).toString()
+        this.giconId = 'google-icon-' + randint(0, 2147483647).toString()
     }
 
     mounted() {
@@ -65,6 +67,14 @@ export default class Searching extends Vue {
     showMeow() {
         this.text = 'Meow~'
     }
+
+    transformIcon() {
+        document.getElementById(this.giconId).addEventListener('mouseover', (e) => {
+            document.getElementById(this.giconId).style.position = 'fixed'
+            document.getElementById(this.giconId).style.left = randint(0, window.innerWidth - 100) + 'px'
+            document.getElementById(this.giconId).style.bottom = randint(0, window.innerHeight - 100) + 'px'
+        }, false)
+    }
 }
 </script>
 
@@ -82,6 +92,7 @@ export default class Searching extends Vue {
     justify-content: center
 
 .googleIcon
+    transition: all 0.5s ease
     display: inline-flex
     height: 100px
     width: 100px
@@ -151,6 +162,7 @@ export default class Searching extends Vue {
 .searchButton:hover
     transform: translateY(-5px)
     filter: drop-shadow(0px 10px 5px rgb(166 134 89 / 84%))
+
 .searchIcon
     color: #dc8a78
     width: 25px
