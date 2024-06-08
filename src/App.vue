@@ -73,4 +73,12 @@ export default class App extends Vue {
 
 .searching
     margin: auto
+
+@media (prefers-color-scheme: dark)
+    .back
+        filter: blur(20px)
+        background-color: rgb(30, 30, 34)
+
+    .filter
+        background-color: rgba(30, 30, 34, 0.5)
 </style>

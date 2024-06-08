@@ -89,7 +89,11 @@ export default class Searching extends Vue {
     width: 100px
     align-self: center
 
+.googleIcon:hover
+    filter: drop-shadow(0px 0px 50px $sky)
+
 .googleTitle
+    transition: all 0.5s ease
     font-family: 'Hua'
     color: $mauve
     font-size: 80px
@@ -97,6 +101,9 @@ export default class Searching extends Vue {
     margin: 20px
     display: inline-flex
     align-self: center
+
+.googleTitle:hover
+    filter: drop-shadow(0px 0px 50px $mauve)
 
 .search
     margin: auto
@@ -160,4 +167,25 @@ export default class Searching extends Vue {
     color: #dc8a78
     width: 25px
     height: 25px
+
+@media (prefers-color-scheme: dark)
+    .searchInput
+        background: rgba(21, 21, 12, 0.75)
+        color: $text
+        border-color: rgba(21, 21, 12, 0.75)
+    
+    .searchInput:hover
+        transform: none
+        filter: drop-shadow(0px 0px 20px $blue)
+    
+    .searchInput:focus
+        transform: none
+        filter: drop-shadow(0px 0px 20px $pink)
+
+    .searchButton
+        background: rgba(21, 21, 12, 0.75)
+    
+    .searchButton:hover
+        transform: none
+        filter: drop-shadow(0px 0px 20px rgb(166 134 89 / 84%))
 </style>

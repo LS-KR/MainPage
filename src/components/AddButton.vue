@@ -96,4 +96,15 @@ div:has(.popup-blur)
 .addName
     color: $base
     font-size: small
+
+@media (prefers-color-scheme: dark)
+    .addButton
+        background: rgba(21, 21, 12, 0.75)
+
+    .addButton:hover
+        transform: none
+        filter: drop-shadow(0px 0px 20px #f2cdcd)
+    
+    .addIcon
+        color: $surface2
 </style>
