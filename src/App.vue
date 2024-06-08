@@ -1,4 +1,5 @@
 <template>
+    <div class="drop" />
     <div class="back" />
     <div class="filter">
         <div class="placeholder0" />
@@ -41,6 +42,14 @@ export default class App extends Vue {
 </style>
 
 <style lang="sass">
+.drop
+    z-index: -2
+    position: fixed
+    left: 0
+    top: 0
+    min-height: 100vh
+    min-width: 100vw
+    background: white
 
 .back
     background-image: url(/img/background.jpg)
@@ -75,9 +84,12 @@ export default class App extends Vue {
     margin: auto
 
 @media (prefers-color-scheme: dark)
+    .drop
+        background: rgb(30, 30, 34)
     .back
-        filter: blur(20px)
+        filter: blur(10px)
         background-color: rgb(30, 30, 34)
+        background-image: url(/img/background-dark.jpg)
 
     .filter
         background-color: rgba(30, 30, 34, 0.5)
