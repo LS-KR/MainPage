@@ -25,7 +25,7 @@ import { randId } from '@/logic/helper';
 @Component({ components: { Icon } })
 export default class Settings extends Vue {
     fieldId: string;
-    shown = false
+    shown = false;
 
     created() {
         this.fieldId = randId('setting-field');
@@ -44,9 +44,9 @@ export default class Settings extends Vue {
     }
 
     show() {
-        if (this.shown) document.getElementById(this.fieldId).style.left = '-200px'
-        else document.getElementById(this.fieldId).style.left = '0px'
-        this.shown = !this.shown
+        if (this.shown) document.getElementById(this.fieldId).style.left = '-200px';
+        else document.getElementById(this.fieldId).style.left = '0px';
+        this.shown = !this.shown;
     }
 }
 </script>
@@ -131,4 +131,16 @@ export default class Settings extends Vue {
     display: inline-block
     margin-top: 15px
     margin-right: 15px
+
+@media (prefers-color-scheme: dark)
+    .settingField
+        background-color: rgba(17, 17, 27, 0.65)
+    .settingButton:hover
+        filter: drop-shadow(0px 0px 20px #fab387)
+    .settingCaption
+        color: #cdd6f4
+    .scrollButton:hover
+        filter: drop-shadow(0px 0px 20px #fab387)
+    .scrollButtonCaption
+        color: #cdd6f4
 </style>
