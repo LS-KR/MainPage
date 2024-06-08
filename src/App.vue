@@ -8,6 +8,7 @@
         <ButtonField />
     </div>
     <Balloon v-for="i in isBirthday" :key="i" />
+    <Settings />
 </template>
 
 <script lang="ts">
@@ -15,9 +16,10 @@ import { Component, Vue } from 'vue-facing-decorator';
 import Searching from './components/Searching.vue';
 import ButtonField from './views/ButtonField.vue';
 import Balloon from './components/Balloon.vue';
+import Settings from './views/Settings.vue';
 import { randint } from './logic/helper';
 
-@Component({ components: { Searching, ButtonField, Balloon } })
+@Component({ components: { Searching, ButtonField, Balloon, Settings } })
 export default class App extends Vue {
     isBirthday = [] as number[];
 
