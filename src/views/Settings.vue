@@ -75,8 +75,8 @@ export default class Settings extends Vue {
 
 .settingButton
     transition: all 0.5s ease
-    width: 100%
-    height: 30px
+    width: calc(100% - 10px)
+    padding: 10px
     display: flex
     flex-direction: row
     justify-content: space-between
@@ -86,14 +86,14 @@ export default class Settings extends Vue {
     border-style: solid
     border-radius: 10px
     border-width: 1px
-    border-color: #fab387
-    margin: 5px 0
+    border-color: #179299
+    margin: 5px
 
 .settingButton:hover
     background: rgba(49, 50, 68, 0.25)
 
 .settingIcon
-    color: #fe640b
+    color: #179299
     width: 25px
     height: 25px
 
@@ -119,7 +119,7 @@ export default class Settings extends Vue {
     background: rgba(49, 50, 68, 0.25)
 
 .scrollButtonIcon
-    color: #fe640b
+    color: #179299
     width: 35px
     height: 35px
     display: block
@@ -135,10 +135,16 @@ export default class Settings extends Vue {
 @media (prefers-color-scheme: dark)
     .settingField
         background-color: rgba(17, 17, 27, 0.65)
+    .settingButton
+        border-color: #fab387
     .settingButton:hover
         filter: drop-shadow(0px 0px 20px #fab387)
+    .settingIcon
+        color: #fe640b
     .settingCaption
         color: #cdd6f4
+    .scrollButtonIcon
+        color: #fe640b
     .scrollButton:hover
         filter: drop-shadow(0px 0px 20px #fab387)
     .scrollButtonCaption
