@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator';
-import SingleButton from './SingleButton.vue';
-import AddButton from './AddButton.vue';
+import SingleButton from '../components/SingleButton.vue';
+import AddButton from '../components/AddButton.vue';
 import { Shortcut } from '@/logic/data';
 
 @Component({ components: { SingleButton, AddButton } })

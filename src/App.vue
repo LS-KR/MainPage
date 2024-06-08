@@ -13,7 +13,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator';
 import Searching from './components/Searching.vue';
-import ButtonField from './components/ButtonField.vue';
+import ButtonField from './views/ButtonField.vue';
 import Balloon from './components/Balloon.vue';
 import { randint } from './logic/helper';
 
