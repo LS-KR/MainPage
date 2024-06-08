@@ -1,5 +1,5 @@
 <template>
-    <div class="field">
+    <div class="field" v-bind:style="fieldStyle">
         <SingleTile v-for="b of buttons" :key="b" :name="b[0]" :target="b[1]" :src="b[2]" />
         <AddTile />
     </div>
@@ -15,10 +15,12 @@ import { Component, Vue } from 'vue-facing-decorator';
 export default class TileField extends Vue {
     shortcuts = [] as Shortcut[];
     buttons = [] as [string, string, string][];
+    fieldStyle = ''
 
     created() {
         if (!localStorage.getItem('buttons')) return;
         this.shortcuts = JSON.parse(localStorage.getItem('buttons')) as Shortcut[];
+        if (this.shortcuts.length > 9) this.fieldStyle = 'justify-items: start; justify-content: start; align-items: flex-start';
         for (const v of this.shortcuts) {
             this.buttons.push([v.name, v.url, v.icon]);
         }
