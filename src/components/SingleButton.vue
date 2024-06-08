@@ -22,7 +22,7 @@ export default class SingleButton extends Vue {
     bindId = 'single-button-';
 
     created() {
-        this.bindId = randId('single-button-')
+        this.bindId = randId('single-button-');
     }
 
     mounted() {

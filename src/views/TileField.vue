@@ -15,7 +15,7 @@ import { Component, Vue } from 'vue-facing-decorator';
 export default class TileField extends Vue {
     shortcuts = [] as Shortcut[];
     buttons = [] as [string, string, string][];
-    fieldStyle = ''
+    fieldStyle = '';
 
     created() {
         if (!localStorage.getItem('buttons')) return;

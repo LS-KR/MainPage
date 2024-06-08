@@ -173,18 +173,18 @@ export default class Searching extends Vue {
         background: rgba(21, 21, 12, 0.75)
         color: $text
         border-color: rgba(21, 21, 12, 0.75)
-    
+
     .searchInput:hover
         transform: none
         filter: drop-shadow(0px 0px 20px $blue)
-    
+
     .searchInput:focus
         transform: none
         filter: drop-shadow(0px 0px 20px $pink)
 
     .searchButton
         background: rgba(21, 21, 12, 0.75)
-    
+
     .searchButton:hover
         transform: none
         filter: drop-shadow(0px 0px 20px rgb(166 134 89 / 84%))

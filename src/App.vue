@@ -5,7 +5,7 @@
         <div class="placeholder0" />
         <Searching class="searching" />
         <div class="placeholder1" />
-        <ButtonField v-if="!isTile"/>
+        <ButtonField v-if="!isTile" />
         <TileField v-else />
     </div>
     <Balloon v-for="i in isBirthday" :key="i" />
@@ -24,7 +24,7 @@ import TileField from './views/TileField.vue';
 @Component({ components: { Searching, ButtonField, Balloon, Settings, TileField } })
 export default class App extends Vue {
     isBirthday = [] as number[];
-    isTile = localStorage.getItem('tiles')
+    isTile = localStorage.getItem('tiles');
 
     created() {
         const now = new Date();

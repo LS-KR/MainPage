@@ -20,7 +20,7 @@ export default class SingleTile extends Vue {
     bindId = 'single-tile-';
 
     created() {
-        this.bindId = randId('single-tile')
+        this.bindId = randId('single-tile');
     }
 
     mounted() {
@@ -120,7 +120,7 @@ export default class SingleTile extends Vue {
     }
 
     jump() {
-        window.open(this.target)
+        window.open(this.target);
     }
 }
 </script>

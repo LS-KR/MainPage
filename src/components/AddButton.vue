@@ -104,7 +104,7 @@ div:has(.popup-blur)
     .addButton:hover
         transform: none
         filter: drop-shadow(0px 0px 20px #f2cdcd)
-    
+
     .addIcon
         color: $surface2
 </style>
