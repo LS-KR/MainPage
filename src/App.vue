@@ -5,7 +5,8 @@
         <div class="placeholder0" />
         <Searching class="searching" />
         <div class="placeholder1" />
-        <ButtonField />
+        <ButtonField v-if="!isTile"/>
+        <TileField v-else />
     </div>
     <Balloon v-for="i in isBirthday" :key="i" />
     <Settings />
@@ -18,10 +19,12 @@ import ButtonField from './views/ButtonField.vue';
 import Balloon from './components/Balloon.vue';
 import Settings from './views/Settings.vue';
 import { randint } from './logic/helper';
+import TileField from './views/TileField.vue';
 
-@Component({ components: { Searching, ButtonField, Balloon, Settings } })
+@Component({ components: { Searching, ButtonField, Balloon, Settings, TileField } })
 export default class App extends Vue {
     isBirthday = [] as number[];
+    isTile = localStorage.getItem('tiles')
 
     created() {
         const now = new Date();

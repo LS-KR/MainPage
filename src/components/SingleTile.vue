@@ -1,10 +1,8 @@
 <template>
-    <div class="single">
-        <button class="singleButton" v-on:click="jump()" v-bind:id="bindId">
-            <img v-bind:src="src" class="singleIcon" />
-        </button>
-        <p class="singleName" v-text="name" />
-    </div>
+    <button class="singleTile" v-on:click="jump()" v-bind:id="bindId">
+        <img v-bind:src="src" class="singleTileIcon" />
+        <p v-text="name" class="singleTileName" />
+    </button>
 </template>
 
 <script lang="ts">
@@ -14,15 +12,15 @@ import Swal from 'sweetalert2';
 import { Component, Prop, Vue } from 'vue-facing-decorator';
 
 @Component({})
-export default class SingleButton extends Vue {
+export default class SingleTile extends Vue {
     @Prop({ required: true }) name: string;
     @Prop({ required: true }) target: string;
     @Prop({ required: true }) src: string;
 
-    bindId = 'single-button-';
+    bindId = 'single-tile-';
 
     created() {
-        this.bindId = randId('single-button-')
+        this.bindId = randId('single-tile')
     }
 
     mounted() {
@@ -122,56 +120,48 @@ export default class SingleButton extends Vue {
     }
 
     jump() {
-        window.open(this.target);
+        window.open(this.target)
     }
 }
 </script>
 
 <style lang="sass">
-@import '@/css/colors/latte'
-
 div:has(.popup-blur)
     backdrop-filter: blur(10px)
 
-.single
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-self: center
-    justify-content: center
-    justify-items: center
-    margin: 10px
-
-.singleButton
+.singleTile
     transition: all 0.5s ease
-    background: rgba(234, 234, 243, 0.75)
-    margin-left: 20px
-    margin-right: 20px
-    width: 50px
-    height: 50px
+    display: inline
+    width: 95px
+    height: 95px
+    margin: 2.5px
+    background: rgba(17, 17, 27, 0.5)
     border-style: none
-    border-radius: 5px
+    border-width: 2px
+    border-radius: 0px
 
-.singleButton:hover
-    transform: translateY(-5px)
-    filter: drop-shadow(0px 10px 5px rgba(17, 17, 27, 0.125))
+.singleTile:hover
+    filter: drop-shadow(0px 0px 20px #f5e0dc)
 
-.singleIcon
-    margin: 5px
+.singleTileIcon
+    display: block
+    margin-top: 30px
+    margin-left: 30px
+    margin-right: 30px
+    margin-bottom: 0px
     width: 30px
     height: 30px
     object-fit: contain
-    margin-top: 7.5px
 
-.singleName
-    color: $base
+.singleTileName
+    display: block
+    position: relative
+    bottom: 0
+    right: 0
+    max-width: 100%
+    overflow: hidden
+    color: #cdd6f4
     font-size: small
-
-@media (prefers-color-scheme: dark)
-    .singleButton
-        background: rgba(21, 21, 12, 0.75)
-
-    .singleButton:hover
-        transform: none
-        filter: drop-shadow(0px 0px 20px #f2cdcd)
+    text-align: right
+    white-space: nowrap
 </style>
