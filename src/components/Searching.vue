@@ -2,19 +2,10 @@
 <template>
     <div class="title">
         <Icon class="googleIcon" icon="logos:google-icon" v-on:click="transformIcon()" v-bind:id="giconId" />
-        <h2
-            class="googleTitle"
-            v-text="text"
-            v-on:mouseover="showTime()"
-            v-on:mouseleave="showMeow()"
-        ></h2>
+        <h2 class="googleTitle" v-text="text" v-on:mouseover="showTime()" v-on:mouseleave="showMeow()"></h2>
     </div>
     <div class="search">
-        <input
-            class="searchInput"
-            placeholder="Search with Google or enter address..."
-            v-bind:id="searchId"
-        />
+        <input class="searchInput" placeholder="Search with Google or enter address..." v-bind:id="searchId" />
         <button class="searchButton" v-on:click="search()">
             <Icon class="searchIcon" icon="ph:arrows-clockwise" />
         </button>
@@ -22,58 +13,58 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-facing-decorator'
-import { randint, isURL, parseSearch } from '@/logic/helper'
-import { Icon } from '@iconify/vue'
+import { Component, Vue } from 'vue-facing-decorator';
+import { randint, isURL, parseSearch } from '@/logic/helper';
+import { Icon } from '@iconify/vue';
 
 @Component({ components: { Icon } })
 export default class Searching extends Vue {
-    searchId = ''
-    giconId = ''
-    text = 'Meow~'
+    searchId = '';
+    giconId = '';
+    text = 'Meow~';
 
     created() {
-        this.searchId = 'search-input-' + randint(0, 2147483647).toString()
-        this.giconId = 'google-icon-' + randint(0, 2147483647).toString()
+        this.searchId = 'search-input-' + randint(0, 2147483647).toString();
+        this.giconId = 'google-icon-' + randint(0, 2147483647).toString();
     }
 
     mounted() {
-        ;(document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
+        (document.getElementById(this.searchId) as HTMLInputElement).addEventListener(
             'keydown',
             (event) => {
-                if (event.key == 'Enter') this.search()
+                if (event.key == 'Enter') this.search();
             },
             false
-        )
+        );
     }
 
     search() {
-        const value = (document.getElementById(this.searchId) as HTMLInputElement).value
+        const value = (document.getElementById(this.searchId) as HTMLInputElement).value;
         if (isURL(value)) {
-            if (!value.startsWith('http://') && !value.startsWith('https://'))
-                open('http://' + value, '_blank')
-            else open(value, '_blank')
-        } else open(parseSearch(value), '_blank')
+            if (!value.startsWith('http://') && !value.startsWith('https://')) open('http://' + value, '_blank');
+            else open(value, '_blank');
+        } else open(parseSearch(value), '_blank');
     }
 
     showTime() {
-        const now = new Date()
-        this.text =
-            now.getHours() +
-            ':' +
-            (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes())
+        const now = new Date();
+        this.text = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes());
     }
 
     showMeow() {
-        this.text = 'Meow~'
+        this.text = 'Meow~';
     }
 
     transformIcon() {
-        document.getElementById(this.giconId).addEventListener('mouseover', (e) => {
-            document.getElementById(this.giconId).style.position = 'fixed'
-            document.getElementById(this.giconId).style.left = randint(0, window.innerWidth - 100) + 'px'
-            document.getElementById(this.giconId).style.bottom = randint(0, window.innerHeight - 100) + 'px'
-        }, false)
+        document.getElementById(this.giconId).addEventListener(
+            'mouseover',
+            (e) => {
+                document.getElementById(this.giconId).style.position = 'fixed';
+                document.getElementById(this.giconId).style.left = randint(0, window.innerWidth - 100) + 'px';
+                document.getElementById(this.giconId).style.bottom = randint(0, window.innerHeight - 100) + 'px';
+            },
+            false
+        );
     }
 }
 </script>

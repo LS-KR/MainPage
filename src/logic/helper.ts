@@ -1,37 +1,37 @@
 export function parseSearch(s: string): string {
-    const sa = s.split(' ')
-    let r = ''
+    const sa = s.split(' ');
+    let r = '';
     for (const v of sa) {
-        if (r == '') r += v
-        else r += '+' + v
+        if (r == '') r += v;
+        else r += '+' + v;
     }
-    return 'https://www.google.com/search?client=firefox-b-d&q=' + r
+    return 'https://www.google.com/search?client=firefox-b-d&q=' + r;
 }
 
 export function trim(str: string, ch: string) {
-    let start = 0
-    let end = str.length
+    let start = 0;
+    let end = str.length;
 
-    while (start < end && str[start] === ch) ++start
+    while (start < end && str[start] === ch) ++start;
 
-    while (end > start && str[end - 1] === ch) --end
+    while (end > start && str[end - 1] === ch) --end;
 
-    return start > 0 || end < str.length ? str.substring(start, end) : str
+    return start > 0 || end < str.length ? str.substring(start, end) : str;
 }
 
 export function getResponseSync(url: string): string {
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', url, false)
-    xhr.send()
-    return xhr.responseText
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send();
+    return xhr.responseText;
 }
 
 export function randint(min: number, max: number): number {
-    return Math.floor(rand(min, max))
+    return Math.floor(rand(min, max));
 }
 
 export function rand(min: number, max: number): number {
-    return Math.random() * (max - min + 1) + min
+    return Math.random() * (max - min + 1) + min;
 }
 
 export function isURL(s: string): boolean {
@@ -43,15 +43,15 @@ export function isURL(s: string): boolean {
             '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
             '(\\#[-a-z\\d_]*)?$',
         'i'
-    )
-    return regex.test(s)
+    );
+    return regex.test(s);
 }
 
 export function delay(milliseconds: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds))
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 export async function scheduledTask(milliseconds: number, task: () => any) {
-    await delay(milliseconds)
-    task()
+    await delay(milliseconds);
+    task();
 }

@@ -8,16 +8,16 @@
 </template>
 
 <script lang="ts">
-import { Shortcut } from '@/logic/data'
-import Swal from 'sweetalert2'
-import { Component, Vue } from 'vue-facing-decorator'
-import { Icon } from '@iconify/vue'
+import { Shortcut } from '@/logic/data';
+import Swal from 'sweetalert2';
+import { Component, Vue } from 'vue-facing-decorator';
+import { Icon } from '@iconify/vue';
 
 @Component({ components: { Icon } })
 export default class AddButton extends Vue {
     add() {
         if (!localStorage.getItem('buttons')) {
-            localStorage.setItem('buttons', '[]')
+            localStorage.setItem('buttons', '[]');
         }
 
         Swal.fire({
@@ -38,21 +38,19 @@ export default class AddButton extends Vue {
                             input: 'text',
                             customClass: 'popup-blur'
                         }).then((e) => {
-                            const buttons = JSON.parse(
-                                localStorage.getItem('buttons')
-                            ) as Shortcut[]
+                            const buttons = JSON.parse(localStorage.getItem('buttons')) as Shortcut[];
                             buttons.push({
                                 name: result.value as string,
                                 url: it.value as string,
                                 icon: e.value as string
-                            })
-                            localStorage.setItem('buttons', JSON.stringify(buttons))
-                            location.reload()
-                        })
+                            });
+                            localStorage.setItem('buttons', JSON.stringify(buttons));
+                            location.reload();
+                        });
                     }
-                })
+                });
             }
-        })
+        });
     }
 }
 </script>

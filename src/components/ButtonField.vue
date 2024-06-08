@@ -6,21 +6,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-facing-decorator'
-import SingleButton from './SingleButton.vue'
-import AddButton from './AddButton.vue'
-import { Shortcut } from '@/logic/data'
+import { Component, Vue } from 'vue-facing-decorator';
+import SingleButton from './SingleButton.vue';
+import AddButton from './AddButton.vue';
+import { Shortcut } from '@/logic/data';
 
 @Component({ components: { SingleButton, AddButton } })
 export default class ButtonField extends Vue {
-    shortcuts = [] as Shortcut[]
-    buttons = [] as [string, string, string][]
+    shortcuts = [] as Shortcut[];
+    buttons = [] as [string, string, string][];
 
     created() {
-        if (!localStorage.getItem('buttons')) return
-        this.shortcuts = JSON.parse(localStorage.getItem('buttons')) as Shortcut[]
+        if (!localStorage.getItem('buttons')) return;
+        this.shortcuts = JSON.parse(localStorage.getItem('buttons')) as Shortcut[];
         for (const v of this.shortcuts) {
-            this.buttons.push([v.name, v.url, v.icon])
+            this.buttons.push([v.name, v.url, v.icon]);
         }
     }
 }

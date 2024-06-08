@@ -5,32 +5,32 @@
 </template>
 
 <script lang="ts">
-import { randint, scheduledTask } from '@/logic/helper'
-import { Component, Vue } from 'vue-facing-decorator'
+import { randint, scheduledTask } from '@/logic/helper';
+import { Component, Vue } from 'vue-facing-decorator';
 
 @Component({ components: {} })
 export default class Balloon extends Vue {
-    db = 'ballon-qwq'
-    sourceImg = 'https://one-among.us/favicon-large.png'
-    styles = ''
+    db = 'ballon-qwq';
+    sourceImg = 'https://one-among.us/favicon-large.png';
+    styles = '';
 
     created() {
-        this.db = 'balloon-' + randint(0, 2147483648).toString()
-        this.sourceImg = `/img/balloons/balloon-${randint(0, 6)}.png`
+        this.db = 'balloon-' + randint(0, 2147483648).toString();
+        this.sourceImg = `/img/balloons/balloon-${randint(0, 6)}.png`;
     }
 
     mounted() {
-        let left = Math.random() * (window.innerWidth - 100)
-        document.getElementById(this.db).style.left = left.toString() + 'px'
-        document.getElementById(this.db).style.bottom = randint(-1800, -100).toString() + 'px'
+        let left = Math.random() * (window.innerWidth - 100);
+        document.getElementById(this.db).style.left = left.toString() + 'px';
+        document.getElementById(this.db).style.bottom = randint(-1800, -100).toString() + 'px';
 
         document.getElementById(this.db).addEventListener('mouseover', (e) => {
-            document.getElementById(this.db).remove()
-        })
+            document.getElementById(this.db).remove();
+        });
 
         scheduledTask(10000, () => {
-            document.getElementById(this.db)?.remove()
-        })
+            document.getElementById(this.db)?.remove();
+        });
     }
 }
 </script>

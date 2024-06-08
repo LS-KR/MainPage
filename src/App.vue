@@ -10,21 +10,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-facing-decorator'
-import Searching from './components/Searching.vue'
-import ButtonField from './components/ButtonField.vue'
-import Balloon from './components/Balloon.vue'
-import { randint } from './logic/helper'
+import { Component, Vue } from 'vue-facing-decorator';
+import Searching from './components/Searching.vue';
+import ButtonField from './components/ButtonField.vue';
+import Balloon from './components/Balloon.vue';
+import { randint } from './logic/helper';
 
 @Component({ components: { Searching, ButtonField, Balloon } })
 export default class App extends Vue {
-    isBirthday = [] as number[]
+    isBirthday = [] as number[];
 
     created() {
-        const now = new Date()
+        const now = new Date();
         if (now.getDate() == 14 && now.getMonth() == 5) {
             for (let i = 0; i < 50; ++i) {
-                this.isBirthday.push(randint(0, 2147483647))
+                this.isBirthday.push(randint(0, 2147483647));
             }
         }
     }
