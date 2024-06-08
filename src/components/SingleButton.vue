@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Shortcut } from '@/logic/data';
-import { randint } from '@/logic/helper';
+import { randId, randint } from '@/logic/helper';
 import Swal from 'sweetalert2';
 import { Component, Prop, Vue } from 'vue-facing-decorator';
 
@@ -22,7 +22,7 @@ export default class SingleButton extends Vue {
     bindId = 'single-button-';
 
     created() {
-        this.bindId += randint(0, 2146483647).toString();
+        this.bindId = randId('single-button-')
     }
 
     mounted() {

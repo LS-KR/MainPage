@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-facing-decorator';
-import { randint, isURL, parseSearch } from '@/logic/helper';
+import { randint, isURL, parseSearch, randId } from '@/logic/helper';
 import { Icon } from '@iconify/vue';
 
 @Component({ components: { Icon } })
@@ -24,8 +24,8 @@ export default class Searching extends Vue {
     text = 'Meow~';
 
     created() {
-        this.searchId = 'search-input-' + randint(0, 2147483647).toString();
-        this.giconId = 'google-icon-' + randint(0, 2147483647).toString();
+        this.searchId = randId('search-input-');
+        this.giconId = randId('google-icon-');
     }
 
     mounted() {

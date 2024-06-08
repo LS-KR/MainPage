@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { randint, scheduledTask } from '@/logic/helper';
+import { randId, randint, scheduledTask } from '@/logic/helper';
 import { Component, Vue } from 'vue-facing-decorator';
 
 @Component({ components: {} })
@@ -15,7 +15,7 @@ export default class Balloon extends Vue {
     styles = '';
 
     created() {
-        this.db = 'balloon-' + randint(0, 2147483648).toString();
+        this.db = randId('balloon');
         this.sourceImg = `/img/balloons/balloon-${randint(0, 6)}.png`;
     }
 

@@ -34,6 +34,10 @@ export function rand(min: number, max: number): number {
     return Math.random() * (max - min + 1) + min;
 }
 
+export function randId(s: string): string {
+    return s.endsWith('-') ? s + randint(0, 2147483647) : s + '-' + randint(0, 2147483647);
+}
+
 export function isURL(s: string): boolean {
     const regex = new RegExp(
         '^(https?:\\/\\/)?' + // validate protocol
