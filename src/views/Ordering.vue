@@ -48,6 +48,8 @@ export default class Ordering extends Vue {
 
 <style lang="sass">
 .od
+    transition: all 0.75s ease
+    opacity: 0
     width: 400px
     height: 600px
     padding: 50px 10px

@@ -3,7 +3,7 @@
         <Icon class="addTileIcon" icon="ion:add-outline" />
         <p class="singleTileName">add...</p>
     </button>
-    <Ordering v-if="ordering" :key="bindKey" />
+    <Ordering v-if="ordering" :key="bindKey" class="orderings" v-bind:style="bindStyle" />
 </template>
 
 <script lang="ts">
@@ -11,7 +11,7 @@ import { Shortcut } from '@/logic/data';
 import Swal from 'sweetalert2';
 import { Component, Vue } from 'vue-facing-decorator';
 import { Icon } from '@iconify/vue';
-import { randId } from '@/logic/helper';
+import { delay, randId } from '@/logic/helper';
 import Ordering from '@/views/Ordering.vue';
 import { watchAnyObject } from '@/logic/object';
 import { nextTick } from 'vue';
@@ -19,6 +19,7 @@ import { nextTick } from 'vue';
 @Component({ components: { Icon, Ordering } })
 export default class AddTile extends Vue {
     ordering = false;
+    bindStyle = '';
     bindId = '';
     bindKey = 0;
 
@@ -30,7 +31,12 @@ export default class AddTile extends Vue {
         document.getElementById(this.bindId).addEventListener(
             'mousedown',
             (e) => {
-                if (e.which == 3) this.ordering = true;
+                if (e.which == 3) {
+                    this.ordering = true;
+                    delay(10).then(() => {
+                        this.bindStyle = 'opacity: 1';
+                    });
+                }
             },
             false
         );
@@ -97,7 +103,7 @@ export default class AddTile extends Vue {
                                 icon: e.value as string
                             });
                             localStorage.setItem('buttons', JSON.stringify(buttons));
-                            location.reload();
+                            document.dispatchEvent(new CustomEvent('add-order-item', { detail: JSON.stringify(this) }));
                         });
                     }
                 });

@@ -103,7 +103,7 @@ export default class SingleTile extends Vue {
                                                 else r.push(v);
                                             }
                                             localStorage.setItem('buttons', JSON.stringify(r));
-                                            window.location.reload();
+                                            document.dispatchEvent(new CustomEvent('add-order-item', { detail: JSON.stringify(this) }));
                                         }
                                     });
                                 }

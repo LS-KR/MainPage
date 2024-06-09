@@ -4,7 +4,7 @@
             <Icon class="addIcon" icon="ion:add-outline" />
         </button>
         <p class="addName">add...</p>
-        <Ordering v-if="ordering" :key="bindKey" />
+        <Ordering v-if="ordering" :key="bindKey" v-bind:style="bindStyle" />
     </div>
 </template>
 
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import { Component, Vue } from 'vue-facing-decorator';
 import { Icon } from '@iconify/vue';
 import Ordering from '@/views/Ordering.vue';
-import { randId } from '@/logic/helper';
+import { delay, randId } from '@/logic/helper';
 import { watchAnyObject } from '@/logic/object';
 import { nextTick } from 'vue';
 
@@ -23,6 +23,7 @@ export default class AddButton extends Vue {
     ordering = false;
     bindId = '';
     bindKey = 0;
+    bindStyle = '';
 
     created() {
         this.bindId = randId('add-button');
@@ -33,6 +34,9 @@ export default class AddButton extends Vue {
             'mousedown',
             (e) => {
                 if (e.which == 3) this.ordering = true;
+                delay(10).then(() => {
+                    this.bindStyle = 'opacity: 1';
+                });
             },
             false
         );
@@ -99,7 +103,7 @@ export default class AddButton extends Vue {
                                 icon: e.value as string
                             });
                             localStorage.setItem('buttons', JSON.stringify(buttons));
-                            location.reload();
+                            document.dispatchEvent(new CustomEvent('add-order-item', { detail: JSON.stringify(this) }));
                         });
                     }
                 });

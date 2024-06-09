@@ -5,8 +5,8 @@
         <div class="placeholder0" />
         <Searching class="searching" />
         <div class="placeholder1" />
-        <ButtonField v-if="!isTile" />
-        <TileField v-else />
+        <ButtonField v-if="!isTile" :key="keyI" />
+        <TileField v-else :key="keyJ" />
     </div>
     <Balloon v-for="i in isBirthday" :key="i" />
     <Settings />
@@ -25,6 +25,8 @@ import TileField from './views/TileField.vue';
 export default class App extends Vue {
     isBirthday = [] as number[];
     isTile = localStorage.getItem('tiles');
+    keyI = 0;
+    keyJ = 0;
 
     created() {
         const now = new Date();
@@ -33,6 +35,18 @@ export default class App extends Vue {
                 this.isBirthday.push(randint(0, 2147483647));
             }
         }
+    }
+
+    mounted() {
+        document.addEventListener(
+            'add-order-item',
+            (e) => {
+                console.log(e);
+                this.keyI += 1;
+                this.keyJ += 1;
+            },
+            false
+        );
     }
 }
 </script>
