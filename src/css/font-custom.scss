@@ -3,19 +3,19 @@
 @font-face {
     font-family: 'Hua';
     src:
-        url('./fonts/FZSJ-HUAZCMWWKQ.woff2') format('woff2'),
-        url('./fonts/FZSJ-HUAZCMWWKQ.woff') format('woff');
+        url('/fonts/FZSJ-HUAZCMWWKQ.woff2') format('woff2'),
+        url('/fonts/FZSJ-HUAZCMWWKQ.woff') format('woff');
 }
 
 @font-face {
     font-family: 'STXINGKA';
-    src: url('./fonts/STXINGKA.woff2') format('woff2');
+    src: url('/fonts/STXINGKA.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'LXGW Wenkai';
     src:
-        url('./fonts/LXGWWenKai-Regular.woff2') format('woff2'),
-        url('./fonts/LXGWWenKai-Bold.woff2') format('woff2'),
-        url('./fonts/LXGWWenKai-Light.woff2') format('woff2');
+        url('/fonts/LXGWWenKai-Regular.ttf') format('ttf'),
+        url('/fonts/LXGWWenKai-Bold.ttf') format('ttf'),
+        url('/fonts/LXGWWenKai-Light.ttf') format('ttf');
 }

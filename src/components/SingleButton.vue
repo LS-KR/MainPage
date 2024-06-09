@@ -129,6 +129,7 @@ export default class SingleButton extends Vue {
 
 <style lang="sass">
 @import '@/css/colors/latte'
+@import '@/css/font-custom'
 
 div:has(.popup-blur)
     backdrop-filter: blur(10px)
@@ -166,6 +167,7 @@ div:has(.popup-blur)
 .singleName
     color: $base
     font-size: small
+    font-family: 'LXGW Wenkai'
 
 @media (prefers-color-scheme: dark)
     .singleButton

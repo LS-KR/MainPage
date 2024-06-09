@@ -126,6 +126,8 @@ export default class SingleTile extends Vue {
 </script>
 
 <style lang="sass">
+@import '@/css/font-custom'
+
 div:has(.popup-blur)
     backdrop-filter: blur(10px)
 
@@ -162,6 +164,7 @@ div:has(.popup-blur)
     overflow: hidden
     color: #cdd6f4
     font-size: small
+    font-family: 'LXGW Wenkai'
     text-align: right
     white-space: nowrap
 </style>
