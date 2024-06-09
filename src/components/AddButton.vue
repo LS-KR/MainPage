@@ -1,9 +1,10 @@
 <template>
     <div class="add">
-        <button class="addButton" v-on:click="add()">
+        <button class="addButton" v-on:click="add()" v-bind:id="bindId">
             <Icon class="addIcon" icon="ion:add-outline" />
         </button>
         <p class="addName">add...</p>
+        <Ordering v-if="ordering" :key="bindKey" />
     </div>
 </template>
 
@@ -12,9 +13,36 @@ import { Shortcut } from '@/logic/data';
 import Swal from 'sweetalert2';
 import { Component, Vue } from 'vue-facing-decorator';
 import { Icon } from '@iconify/vue';
+import Ordering from '@/views/Ordering.vue';
+import { randId } from '@/logic/helper';
 
-@Component({ components: { Icon } })
+@Component({ components: { Icon, Ordering } })
 export default class AddButton extends Vue {
+    ordering = false;
+    bindId = '';
+    bindKey = 0;
+
+    created() {
+        this.bindId = randId('add-button');
+    }
+
+    mounted() {
+        document.getElementById(this.bindId).addEventListener(
+            'mousedown',
+            (e) => {
+                if (e.which == 3) this.ordering = true;
+            },
+            false
+        );
+        window.addEventListener(
+            'storage',
+            (e) => {
+                this.bindKey += 1;
+            },
+            false
+        );
+    }
+
     add() {
         if (!localStorage.getItem('buttons')) {
             localStorage.setItem('buttons', '[]');
