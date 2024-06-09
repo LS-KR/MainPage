@@ -1,0 +1,3 @@
+[submodule "src/logic/localDataStorage"]
+	path = src/logic/localDataStorage
+	url = https://github.com/LS-KR/localDataStorage
