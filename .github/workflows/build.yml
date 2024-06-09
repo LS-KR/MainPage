@@ -20,6 +20,7 @@ jobs:
       - name: Install and build
         run: |
           git submodule init
+          git submodule update
           export NODE_OPTIONS="--max-old-space-size=4096"
           yarn install
           yarn build-github
