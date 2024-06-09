@@ -101,7 +101,7 @@ export default class OrderItem extends Vue {
     text-align: left
     font-size: 16px
     color: #4c4f69
-    margin: 0px 5px
+    margin: 2px 5px
 
 .buttons
     display: inline-flex
@@ -136,4 +136,21 @@ export default class OrderItem extends Vue {
 
 .orderIcon:hover
     filter: drop-shadow(0px 0px 5px #7287fd)
+
+@media (prefers-color-scheme: dark)
+    .orderItem
+        background: #313244
+        border-color: #171727
+
+    .orderItem:hover
+        border-color: #fab387
+    
+    .orderName
+        color: #cdd6f4
+
+    .orderIcon
+        color: #eba0ac
+
+    .orderIcon:hover
+        filter: drop-shadow(0px 0px 5px #f9e2af)
 </style>

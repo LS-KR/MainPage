@@ -61,7 +61,7 @@ export default class Ordering extends Vue {
     position: fixed
     z-index: 4
     left: calc(50% - 200px)
-    top: calc(50% - 300px)
+    top: calc(50% - 350px)
 
 .ordering
     display: flex
@@ -84,5 +84,18 @@ export default class Ordering extends Vue {
 .confirmOrder:hover
     background: rgba(140, 143, 161, 0.5)
     filter: drop-shadow(0px 0px 10px #7287fd)
+
+@media (prefers-color-scheme: dark)
+    .od
+        background-color: rgba(35, 31, 23, 0.85)
+        filter: drop-shadow(0px 0px 20px #f9e2af)
+    
+    .confirmOrder
+        border-color: #fab387
+        color: #cdd6f4
+    
+    .confirmOrder:hover
+        background: none
+        filter: drop-shadow(0px 0px 20px #fab387)
     
 </style>
