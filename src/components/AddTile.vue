@@ -1,8 +1,9 @@
 <template>
-    <button class="singleTile" v-on:click="add()">
+    <button class="singleTile" v-on:click="add()" v-bind:id="bindId">
         <Icon class="addTileIcon" icon="ion:add-outline" />
         <p class="singleTileName">add...</p>
     </button>
+    <Ordering v-if="ordering" :key="bindKey" />
 </template>
 
 <script lang="ts">
@@ -10,9 +11,36 @@ import { Shortcut } from '@/logic/data';
 import Swal from 'sweetalert2';
 import { Component, Vue } from 'vue-facing-decorator';
 import { Icon } from '@iconify/vue';
+import { randId } from '@/logic/helper';
+import Ordering from '@/views/Ordering.vue';
 
-@Component({ components: { Icon } })
+@Component({ components: { Icon, Ordering } })
 export default class AddTile extends Vue {
+    ordering = false;
+    bindId = '';
+    bindKey = 0;
+
+    created() {
+        this.bindId = randId('add-tile');
+    }
+
+    mounted() {
+        document.getElementById(this.bindId).addEventListener(
+            'mousedown',
+            (e) => {
+                if (e.which == 3) this.ordering = true;
+            },
+            false
+        );
+        window.addEventListener(
+            'storage',
+            (e) => {
+                this.bindKey += 1;
+            },
+            false
+        );
+    }
+
     add() {
         if (!localStorage.getItem('buttons')) {
             localStorage.setItem('buttons', '[]');
