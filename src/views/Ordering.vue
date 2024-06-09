@@ -34,7 +34,7 @@ export default class Ordering extends Vue {
                 for (const v of this.shortcuts) {
                     this.items.push([v.name, v.url, v.icon]);
                 }
-                this.$forceUpdate()
+                this.$forceUpdate();
             },
             false
         );
@@ -89,13 +89,12 @@ export default class Ordering extends Vue {
     .od
         background-color: rgba(35, 31, 23, 0.85)
         filter: drop-shadow(0px 0px 20px #f9e2af)
-    
+
     .confirmOrder
         border-color: #fab387
         color: #cdd6f4
-    
+
     .confirmOrder:hover
         background: none
         filter: drop-shadow(0px 0px 20px #fab387)
-    
 </style>
