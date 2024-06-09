@@ -15,6 +15,8 @@ import { Component, Vue } from 'vue-facing-decorator';
 import { Icon } from '@iconify/vue';
 import Ordering from '@/views/Ordering.vue';
 import { randId } from '@/logic/helper';
+import { watchAnyObject } from '@/logic/object';
+import { nextTick } from 'vue';
 
 @Component({ components: { Icon, Ordering } })
 export default class AddButton extends Vue {
@@ -34,10 +36,34 @@ export default class AddButton extends Vue {
             },
             false
         );
-        window.addEventListener(
-            'storage',
+        watchAnyObject(window.localStorage, ['setItem'], () => {
+            this.ordering = false;
+            this.bindKey += 1;
+            nextTick().then(() => {
+                this.ordering = true;
+            });
+        });
+        document.addEventListener(
+            'localDataStorage',
             (e) => {
+                console.log(e);
+                this.ordering = false;
                 this.bindKey += 1;
+                nextTick().then(() => {
+                    this.ordering = true;
+                });
+            },
+            false
+        );
+        document.addEventListener(
+            'update-order-item',
+            (e) => {
+                console.log(e);
+                this.ordering = false;
+                this.bindKey += 1;
+                nextTick().then(() => {
+                    this.ordering = true;
+                });
             },
             false
         );

@@ -44,6 +44,8 @@ export default class OrderItem extends Vue {
             r.push(shortcuts[i]);
         }
         localStorage.setItem('buttons', JSON.stringify(r));
+        
+        document.dispatchEvent(new CustomEvent('update-order-item', {detail: JSON.stringify(this)}))
     }
 
     down() {
@@ -67,6 +69,8 @@ export default class OrderItem extends Vue {
             r.push(shortcuts[i]);
         }
         localStorage.setItem('buttons', JSON.stringify(r));
+
+        document.dispatchEvent(new CustomEvent('update-order-item', {detail: JSON.stringify(this)}))
     }
 }
 </script>
