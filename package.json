@@ -14,7 +14,7 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "build-github": "yarn build && bash ./scripts/github.sh"
+    "build-github": "cp -rf scripts/.vite.config.ts ./vite.config.ts && cp -rf scripts/.vitest.config.ts ./vitest.config.tx && yarn build"
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
